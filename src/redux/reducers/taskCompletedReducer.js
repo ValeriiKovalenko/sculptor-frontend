@@ -3,7 +3,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-underscore-dangle */
 
-const weekTasks = [
+const week = [
   {
     color: '',
     completed: false,
@@ -18,12 +18,20 @@ const weekTasks = [
   },
 ];
 
-function taskCompleted(state = weekTasks, action) {
+function taskCompleted(state = week, action) {
   switch (action.type) {
     case 'DASHBOARD_TASK_COMPLETED':
       // eslint-disable-next-line no-console
-      console.log('DASHBOARD_TASK_COMPLETED', state);
+      // console.log('DASHBOARD_TASK_COMPLETED state', state);
+      // eslint-disable-next-line no-console
+      console.log(
+        'DASHBOARD_TASK_COMPLETED action.weektasks',
+        action.weektasks,
+      );
       return state;
+
+    // update color in weekTasks
+    // update color in Tasks
 
     // const targetTask = state.find(
     //   el => el._id === action.id || el.name === action.id,
@@ -51,12 +59,13 @@ export default taskCompleted;
 // name and id of the task saved in the Goal
 // state.goalData.goalTasks[0].name //"1556098808857"
 // state.goalData.goalTasks[0].id //"1556098808857"
-// owner ID
-// state.goals[0].ownerId //"5cb9963d06b961a1025d6000"
-// task completed status
+// UPD task completed status
 // state.goals[0].goalTasks[0].isComplete //false
-// goal completed status
-// state.goals[0].goalCompleted //false
 // goal color
 // state.goalData.goalColor //""
 // state.goalData.activeGoalId //""
+
+// goal completed status
+// state.goals[0].goalCompleted //false
+// owner ID
+// state.goals[0].ownerId //"5cb9963d06b961a1025d6000"

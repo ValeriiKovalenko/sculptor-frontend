@@ -1,11 +1,17 @@
 /*  eslint-disable  */
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../Header/Header';
+// import Container from '../Container/Container';
+import './App.css';
+import Sidebar from '../Sidebar/Sidebar';
+
+// Dashboard
+import Dashboard from '../Dashboard/Dashboard';
 import TestDashboard from '../TestDashboard/TestDashboard';
 import TestResults from '../TestResults/TestResults';
+import { func } from 'prop-types';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -53,14 +59,17 @@ class App extends Component {
         >
           EDIT GOAL
         </button>
-        {/* temp */}
-        <CustomCheckbox />
 
         {editGoal.editing && (
           <Backdrop>
             <SetGoalModal modalType={editGoal.modalType} />
           </Backdrop>
         )}
+
+        <div className="App">
+          <Sidebar />
+          <Dashboard />
+        </div>
       </>
     );
   }

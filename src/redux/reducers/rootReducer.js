@@ -1,16 +1,30 @@
+/*eslint-disable*/
 import { combineReducers } from 'redux';
-
+import app from './appReducer';
+import activeDateReducer from './datePickerReducer';
+import {
+  goalsReducer,
+  taskReducer,
+  weekTasksReducer,
+} from '../../components/Dashboard/reducerDashboard';
 import editGoal from './goalEditModeReducer';
-// import goals from './saveGoalReducer';
-import goals from './initData';
 import goalData from './goalReducer';
 import taskCompleted from './taskCompletedReducer';
 
+import goals from './initData';
+import dateReducer from './dateReducer';
+
 const rootReducer = combineReducers({
+  goals: goalsReducer,
+  tasks: taskReducer,
+  weekTasks: weekTasksReducer,
+  app,
+  activeDateReducer,
   goalData,
   editGoal,
   goals,
   taskCompleted,
+  taskArray: dateReducer,
 });
 
 export default rootReducer;

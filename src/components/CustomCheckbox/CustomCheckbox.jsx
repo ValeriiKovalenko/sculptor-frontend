@@ -16,14 +16,22 @@ import {
 import './CustomCheckbox.css';
 
 const CustomCheckbox = ({
+  goalID,
+  taskID,
+  checkboxType,
   // eslint-disable-next-line no-shadow
   sidebarCheckboxAction,
   // eslint-disable-next-line no-shadow
   dashboardCheckboxAction,
   goalColor,
   id,
-  checkboxType,
 }) => {
+  // // eslint-disable-next-line no-console
+  // console.log('checkboxID', checkboxID);
+  // // eslint-disable-next-line no-console
+  // console.log('data', data);
+  // eslint-disable-next-line no-console
+
   const styles = {
     small: {
       width: 36,
@@ -54,6 +62,8 @@ const CustomCheckbox = ({
                 onChange={dashboardCheckboxAction}
                 style={styles.small}
                 value={id}
+                goalID={goalID}
+                taskID={taskID}
               />
             }
           />
@@ -71,6 +81,8 @@ const CustomCheckbox = ({
                 onChange={sidebarCheckboxAction}
                 style={styles.small}
                 value={id}
+                goalID={goalID}
+                taskID={taskID}
               />
             }
           />
@@ -86,20 +98,21 @@ const CustomCheckbox = ({
               disabled
               style={styles.large}
               value={id}
+              goalID={goalID}
             />
           }
         />
       </div>
     );
   };
-
+  // eslint-disable-next-line no-console
   return returnCheckbox(checkboxType);
 };
 
 function MSTP(state) {
   return {
     goalColor: state.goalData.goalColor,
-    checkboxType: 'dashboardCheckbox',
+    // data: state.data,
   };
 }
 
