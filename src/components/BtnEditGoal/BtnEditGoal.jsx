@@ -27,9 +27,9 @@ const styles = theme => ({
 });
 
 function FloatingActionButtons(props) {
-  const { classes } = props;
+  const { classes, id } = props;
   return (
-    <div>
+    <div data-id={id}>
       <Fab
         color="secondary"
         aria-label="Edit"
