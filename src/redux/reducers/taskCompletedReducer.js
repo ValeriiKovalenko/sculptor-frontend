@@ -3,41 +3,38 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-underscore-dangle */
 
-const week = [
-  {
-    color: '',
-    completed: false,
-    _id: '123',
-    checkboxType: 'dashboardCheckbox',
-  },
-  {
-    color: '',
-    completed: false,
-    _id: '456',
-    checkboxType: 'dashboardCheckbox',
-  },
-];
+// const week = [
+//   {
+//     color: '',
+//     completed: false,
+//     _id: '123',
+//     checkboxType: 'dashboardCheckbox',
+//   },
+//   {
+//     color: '',
+//     completed: false,
+//     _id: '456',
+//     checkboxType: 'dashboardCheckbox',
+//   },
+// ];
 
-function taskCompleted(state = week, action) {
+function taskCompleted(state = [], action) {
   switch (action.type) {
     case 'DASHBOARD_TASK_COMPLETED':
-      // eslint-disable-next-line no-console
-      // console.log('DASHBOARD_TASK_COMPLETED state', state);
-      // eslint-disable-next-line no-console
-      console.log(
-        'DASHBOARD_TASK_COMPLETED action.weektasks',
-        action.weektasks,
+      const targetDay = action.date.toString().slice(0, 3);
+      const dayData = action.tasks.find(
+        day => day.data.toString().slice(0, 3) === targetDay,
       );
-      return state;
+      const dayTasks = dayData.tasks;
+      const targetTask = dayTasks.find(task => task.id === action.taskID);
+      targetTask.isComplete = action.checked;
+      // eslint-disable-next-line no-console
+      console.log(targetTask);
+      return targetTask;
 
     // update color in weekTasks
     // update color in Tasks
 
-    // const targetTask = state.find(
-    //   el => el._id === action.id || el.name === action.id,
-    // );
-    // targetTask.taskWeekRange[action.name].status = action.checked;
-    // return state.map(el => (el._id === action.id ? targetTask : el));
     case 'SIDEBAR_TASK_COMPLETED':
       // eslint-disable-next-line no-console
       console.log('SIDEBAR_TASK_COMPLETED', state);

@@ -1,12 +1,16 @@
 // eslint-disable-next-line import/prefer-default-export
-export const dashboardCheckboxAction = e => {
+export const dashboardCheckboxAction = (e, goalID, tasks, date) => {
   // eslint-disable-next-line no-console
-  console.log(e.target.value, e.target.checked, e.target.name);
+  console.log('e.target', e.target);
+  // eslint-disable-next-line no-console
+  console.log('tasks ======= ', tasks);
   return {
     type: 'DASHBOARD_TASK_COMPLETED',
-    id: e.target.value,
-    name: e.target.name,
-    checked: e.target.name,
+    taskID: e.target.id,
+    checked: e.target.checked,
+    goalID,
+    tasks,
+    date,
   };
 };
 

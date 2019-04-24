@@ -16,37 +16,37 @@ import {
 import './CustomCheckbox.css';
 
 const CustomCheckbox = ({
+  id,
   goalID,
-  taskID,
+  tasks,
+  date,
   checkboxType,
   // eslint-disable-next-line no-shadow
   sidebarCheckboxAction,
   // eslint-disable-next-line no-shadow
   dashboardCheckboxAction,
   goalColor,
-  id,
+  color,
+  // taskCompleted,
 }) => {
   // // eslint-disable-next-line no-console
-  // console.log('checkboxID', checkboxID);
-  // // eslint-disable-next-line no-console
   // console.log('data', data);
-  // eslint-disable-next-line no-console
 
   const styles = {
     small: {
       width: 36,
       height: 36,
-      color: goalColor || '#dee5e8',
+      color: color || goalColor || '#dee5e8',
     },
     medium: {
       width: 48,
       height: 48,
-      color: goalColor || '#dee5e8',
+      color: color || goalColor || '#dee5e8',
     },
     large: {
       width: 60,
       height: 60,
-      color: goalColor || '#dee5e8',
+      color: color || goalColor || '#dee5e8',
     },
   };
 
@@ -59,11 +59,11 @@ const CustomCheckbox = ({
               <Checkbox
                 icon={<RadioButtonUnchecked fontSize="small" />}
                 checkedIcon={<CheckCircle fontSize="small" />}
-                onChange={dashboardCheckboxAction}
+                onChange={e => dashboardCheckboxAction(e, goalID, tasks, date)}
                 style={styles.small}
-                value={id}
-                goalID={goalID}
-                taskID={taskID}
+                id={id}
+                tasks={tasks}
+                date={date}
               />
             }
           />
@@ -80,9 +80,6 @@ const CustomCheckbox = ({
                 checkedIcon={<CheckCircle fontSize="small" />}
                 onChange={sidebarCheckboxAction}
                 style={styles.small}
-                value={id}
-                goalID={goalID}
-                taskID={taskID}
               />
             }
           />
@@ -97,8 +94,6 @@ const CustomCheckbox = ({
               icon={<Lens fontSize="large" />}
               disabled
               style={styles.large}
-              value={id}
-              goalID={goalID}
             />
           }
         />
@@ -112,6 +107,7 @@ const CustomCheckbox = ({
 function MSTP(state) {
   return {
     goalColor: state.goalData.goalColor,
+    // taskCompleted: state.taskCompleted,
     // data: state.data,
   };
 }
@@ -121,8 +117,8 @@ function MDTP(dispatch) {
     sidebarCheckboxAction(e) {
       dispatch(sidebarCheckboxAction(e));
     },
-    dashboardCheckboxAction(e) {
-      dispatch(dashboardCheckboxAction(e));
+    dashboardCheckboxAction(e, goalID, tasks, date) {
+      dispatch(dashboardCheckboxAction(e, goalID, tasks, date));
     },
   };
 }

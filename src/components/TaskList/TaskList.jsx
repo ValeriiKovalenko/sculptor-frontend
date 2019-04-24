@@ -15,7 +15,9 @@ const List = styled.ul`
 const TaskList = ({ items }) => {
   return (
     <List>
-      <TaskItem data={items} />
+      {items.map((item, indx) => (
+        <TaskItem data={item} indx={indx} />
+      ))}
     </List>
   );
 };

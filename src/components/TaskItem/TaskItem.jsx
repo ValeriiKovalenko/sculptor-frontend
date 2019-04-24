@@ -1,7 +1,9 @@
 /* eslint-disable */
 import React from 'react';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
 
+import styled from 'styled-components';
+import deleteTask from '../Dashboard/deleteAction';
 import IconButtons from '../TrashButton';
 import CustomCheckbox from '../CustomCheckbox/CustomCheckbox';
 
@@ -39,31 +41,27 @@ const MoveToTrash = styled.div`
   }
 `;
 
-const TaskItem = ({ data }) => {
-  // eslint-disable-next-line no-console
-  // console.log('data', data);
-  //   goalId: "5cb9c6ae3a3716ba53565874"
-  // isComplete: false
-  // taskActiveDates: []
-  // taskCreateDate: "2019-04-19T13:01:32.751Z"
-  // taskTitle: "Task3"
-  // taskWeekRange: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-  // __v: 0
-  // _id: "5cb9c6ae3a3716ba53565876"
+const TaskItem = ({ data, remove, indx, tasks }) => {
+  // console.log('data =========== ', data);
+  // console.log('indx =========== ', indx);
+  // console.log('data.date =========== ', data.date);
   return (
     <>
       <Item key={data.id}>
         {/* <ItemStatus color={data.color} /> */}
 
         <CustomCheckbox
-          goalID={data.goalId}
-          taskID={data.id}
+          id={data.id}
           checkboxType={'dashboardCheckbox'}
+          goalID={data.goalId}
+          tasks={tasks}
+          date={data.date}
+          color={data.color}
         />
 
         <ItemDescription>{data.title}</ItemDescription>
 
-        <MoveToTrash>
+        <MoveToTrash onClick={() => remove(indx, data.date)}>
           <IconButtons />
         </MoveToTrash>
       </Item>
@@ -71,4 +69,15 @@ const TaskItem = ({ data }) => {
   );
 };
 
-export default TaskItem;
+const mstp = store => ({
+  tasks: store.weekTasks,
+});
+
+const mdtp = dispatch => ({
+  remove: (id, taskDate) => dispatch(deleteTask(id, taskDate)),
+});
+
+export default connect(
+  mstp,
+  mdtp,
+)(TaskItem);
