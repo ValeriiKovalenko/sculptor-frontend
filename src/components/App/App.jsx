@@ -16,7 +16,12 @@ import DeleteButton from '../Button/DeleteButton/DeleteButton';
 import SetButtonButton from '../Button/SetButton/SetButton';
 import EditButton from '../Button/EditButton/EditButton';
 import SetEditGoalModal from '../../redux/actions/toggleSetEditGoalModalActions';
+
+// temp
+import CustomCheckbox from '../CustomCheckbox/CustomCheckbox';
+
 import './App.css';
+import { Checkbox } from '@material-ui/core';
 
 //
 class App extends Component {
@@ -48,6 +53,8 @@ class App extends Component {
         >
           EDIT GOAL
         </button>
+        {/* temp */}
+        <CustomCheckbox />
 
         {editGoal.editing && (
           <Backdrop>
