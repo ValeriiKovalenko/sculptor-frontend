@@ -19,7 +19,7 @@ import weekTasksAction from './weekAction';
 const Container = styled.div`
   margin: auto;
   width: 32rem;
-  padding: 0 1.5rem;
+  padding: 1.5rem;
   background-color: #eee;
   display: flex;
   flex-direction: column;

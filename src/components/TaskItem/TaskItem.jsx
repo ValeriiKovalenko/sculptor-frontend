@@ -1,7 +1,9 @@
 /* eslint-disable */
 import React from 'react';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
 
+import styled from 'styled-components';
+import deleteTask from '../Dashboard/deleteAction';
 import IconButtons from '../TrashButton';
 
 const Item = styled.li`
@@ -38,13 +40,14 @@ const MoveToTrash = styled.div`
   }
 `;
 
-const TaskItem = ({ data }) => {
+const TaskItem = ({ data, remove, indx }) => {
   return (
     <>
       <Item key={data.id}>
         <ItemStatus color={data.color} />
         <ItemDescription>{data.title}</ItemDescription>
-        <MoveToTrash>
+
+        <MoveToTrash onClick={() => remove(indx, data.date)}>
           <IconButtons />
         </MoveToTrash>
       </Item>
@@ -52,4 +55,15 @@ const TaskItem = ({ data }) => {
   );
 };
 
-export default TaskItem;
+const mstp = store => ({
+  tasks: store.weekTasks,
+});
+
+const mdtp = dispatch => ({
+  remove: (id, taskDate) => dispatch(deleteTask(id, taskDate)),
+});
+
+export default connect(
+  mstp,
+  mdtp,
+)(TaskItem);

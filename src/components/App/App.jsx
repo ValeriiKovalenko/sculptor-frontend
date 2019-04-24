@@ -13,7 +13,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*sidebar and dashboard  */}
         <Sidebar />
         <Dashboard />
       </div>

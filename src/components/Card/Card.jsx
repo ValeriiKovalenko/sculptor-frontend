@@ -12,6 +12,7 @@ const CardItem = styled.div`
   :not(:last-child) {
     margin-bottom: 1.5rem;
   }
+  min-height: 20rem;
   width: 29.5rem;
 `;
 
@@ -21,7 +22,7 @@ const Card = ({ day }) => {
   return (
     <CardItem>
       <CardTitle title={title} />
-      <TaskList items={day} />
+      {day.tasks && <TaskList items={day.tasks} />}
     </CardItem>
   );
 };
