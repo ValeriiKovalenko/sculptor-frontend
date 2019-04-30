@@ -22,6 +22,7 @@ function taskCompleted(state = [], action) {
   switch (action.type) {
     case 'DASHBOARD_TASK_COMPLETED':
       const targetDay = action.date.toString().slice(0, 3);
+      // updating "isComplete" flag in store.weekTasks
       const dayData = action.tasks.find(
         day => day.data.toString().slice(0, 3) === targetDay,
       );
@@ -30,6 +31,25 @@ function taskCompleted(state = [], action) {
       targetTask.isComplete = action.checked;
       // eslint-disable-next-line no-console
       console.log(targetTask);
+      // ===============THIS REDUCER SHOULD ALSO PERFORM THE FOLLOWING UPDATES===================
+      // updating 2 flags:
+      // "isComplete" flag in store.goals[0].goalTasks[0]
+      // and "status" flag in store.goals[0].goalTasks[0].taskWeekRange[0].status
+
+      // the first array element can be found by store.goals[0]._id (goal id)
+      // the second array element can be found by store.goals[0].goalTasks[0]._id (task id)
+      // TO BE UPDATED on this level: store.goals[0].goalTasks[0].isComplete (boolean)
+      // the third array element can be found by store.goals[0].goalTasks[0].taskWeekRange[0].week (1-7, where 1 corresponds to the element with index 0)
+      // TO BE UPDATED on this level: store.goals[0].goalTasks[0].taskWeekRange[0].status (boolean)
+
+      // TO BE UPDATED (conditional): store.goals[0].goalCompleted (boolean), if all the tasks for this goal have been checked out
+
+      // OTHER POTENTIAL UPDATES
+      // updating a flag in store.tasks (empty array by now)
+      // updating store.taskCompleted (empty array by now)
+      // updating store.taskArray (empty array by now)
+      // ======================================================================================
+
       return targetTask;
 
     // update color in weekTasks
