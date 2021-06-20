@@ -1,3 +1,18 @@
+Habbit-tracking application https://sculptor.goit.co.ua/
+
+<img width="1412" alt="Снимок экрана 2021-06-20 в 14 27 51" src="https://user-images.githubusercontent.com/47474234/122672326-bc286280-d1d3-11eb-83fe-d82691c7b207.png">
+<img width="1413" alt="Снимок экрана 2021-06-20 в 14 27 22" src="https://user-images.githubusercontent.com/47474234/122672327-bdf22600-d1d3-11eb-8560-a43f0369e471.png">
+<img width="1419" alt="Снимок экрана 2021-06-20 в 14 27 12" src="https://user-images.githubusercontent.com/47474234/122672329-bdf22600-d1d3-11eb-9481-a6f110739ceb.png">
+<img width="1417" alt="Снимок экрана 2021-06-20 в 14 26 44" src="https://user-images.githubusercontent.com/47474234/122672330-be8abc80-d1d3-11eb-9f4c-8c382c328a08.png">
+
+
+
+
+
+
+
+
+
 1) Клонируете себе dev : 
 	git clone -b dev https://ccылка_на_репозиторий
 2) Переходите в ветку dev. Забираете последние изменения в ветке dev. Потом создаете свою ветку находясь в ветке dev, с названием своей задачи:
